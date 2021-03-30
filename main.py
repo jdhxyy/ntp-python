@@ -9,9 +9,8 @@ import config
 import tziot
 import dcompy as dcom
 import lagan
-import time
 
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta
 
 TAG = 'ntp'
 
@@ -29,6 +28,7 @@ def main():
     lagan.load(0)
     lagan.set_filter_level(lagan.LEVEL_INFO)
     lagan.enable_color(True)
+    dcom.set_filter_level(lagan.LEVEL_WARN)
 
     tziot.bind_pipe_net(config.LOCAL_IA, config.local_pwd, config.LOCAL_IP, config.LOCAL_PORT)
     tziot.register(RID_GET_TIME, ntp_service)
